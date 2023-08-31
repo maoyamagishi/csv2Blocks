@@ -1,0 +1,10 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"script",
+	"author":	"",
+	"description":	{
+		"":	"generate blocks  according to information in the csv file which user chooses."
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

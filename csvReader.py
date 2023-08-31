@@ -1,7 +1,7 @@
 import csv
-from pathlib import Path
 
 class csvReader:
+
     def Reader(cFile):
         with open(cFile,"r") as f:
            reader = csv.reader(f)

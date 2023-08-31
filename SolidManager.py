@@ -23,7 +23,7 @@ class BaseTools:
 
 
 
-class plane_tools():
+class planeTools:
 
     def plane_builder(dist):     
         try:           #offset平面の生成（一枚分）
@@ -43,25 +43,26 @@ class plane_tools():
         sketch = sketches.add(plane)
         lines = sketch.sketchCurves.sketchLines
         sketchPoint1 = adsk.core.Point3D.create(pointlist1[0],pointlist1[1],pointlist1[2])
-        sketchPoint2 = adsk.core.Point3D.create(pointlist2[0],pointlist2[1],pointlist2[2])
+        sketchPoint2 = adsk.core.Point3D.create(pointlist2[0],pointlist2[1],pointlist1[2])
         rectangle = lines.addTwoPointRectangle(sketchPoint1,sketchPoint2)
         prof = sketch.profiles.item(0)
         return prof, basecomp
     
-    def ExtrudeAndCut(item,dist):
-        basecomp = plane_tools.createNewComponent(app)
-        distance = adsk.core.ValueInput.createByReal(dist)
-        extrudes = basecomp.features.extrudeFeatures
-        operation = adsk.fusion.FeatureOperations.CutFeatureOperation
-        extrudes.addSimple(item,distance,operation)
+class BlockTools:
 
-    def ExtrudeNew(sent,thickness):
-        ui.messageBox(format(type(sent)))
+    def ExtrudeInterface(sent,thickness,mode):
         profile = sent[0]
         basecomp = sent[1]
-        dist = adsk.core.ValueInput.createByReal(5)
+        dist = adsk.core.ValueInput.createByReal(thickness)
         extrudes = basecomp.features.extrudeFeatures
-        operation = adsk.fusion.FeatureOperations.NewBodyFeatureOperation
+        BlockTools.MyExtrude(profile,dist,mode,extrudes)
+        
+
+    def MyExtrude(profile,dist,mode,extrudes):
+        if mode == 0: #NewBody
+            operation = adsk.fusion.FeatureOperations.NewBodyFeatureOperation    
+        else: #CutFeature
+            operation = adsk.fusion.FeatureOperations.CutFeatureOperation
         ext = extrudes.addSimple(profile,dist,operation)
 
 

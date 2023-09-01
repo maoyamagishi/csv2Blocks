@@ -20,7 +20,7 @@ class csvReader:
     def ReadOriginal(arg):
         shape = []
         for ii in range(3):
-           shape.append(arg[0][ii +1])
+           shape.append(arg[0][ii])
         return shape
 
       

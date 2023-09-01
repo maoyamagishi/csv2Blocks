@@ -13,6 +13,7 @@ def run(context):
         ui  = app.userInterface
         fil = Dw.DialogueHandler.DialogueOpener()
         lst = Cr.csvReader.Reader(fil)
+        ui.messageBox(format(fil))
         check = Cr.csvReader.FileFormatCertification(lst)
         if check == False:
             ui.messageBox('Wrong csv file!')

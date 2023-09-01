@@ -16,4 +16,6 @@ class DialogueHandler:
             return
         filename = dlg.filename
         return filename
+    
+    #TO DO: Add function manage the path when machene can't get it.
         

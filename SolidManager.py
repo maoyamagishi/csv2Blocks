@@ -42,8 +42,8 @@ class planeTools:
         sketches = basecomp.sketches
         sketch = sketches.add(plane)
         lines = sketch.sketchCurves.sketchLines
-        sketchPoint1 = adsk.core.Point3D.create(pointlist1[0],pointlist1[1],pointlist1[2])
-        sketchPoint2 = adsk.core.Point3D.create(pointlist2[0],pointlist2[1],pointlist1[2])
+        sketchPoint1 = adsk.core.Point3D.create(pointlist1[0],pointlist1[1],0)
+        sketchPoint2 = adsk.core.Point3D.create(pointlist1[0]+ pointlist2[0],pointlist1[1]+ pointlist2[1],0)
         rectangle = lines.addTwoPointRectangle(sketchPoint1,sketchPoint2)
         prof = sketch.profiles.item(0)
         return prof, basecomp
